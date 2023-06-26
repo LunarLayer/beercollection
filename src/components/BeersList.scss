@@ -1,18 +1,48 @@
 #beersList {
-  background-color: #191919;
   padding-inline: 20px;
-// flyt til overview
+
+  // flyt til overview
   table {
     margin-inline: auto;
     width: 100%;
     max-width: 1000px;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0 3px;
 
     thead {
       tr {
+        cursor: default;
+
         // no pointer cursor
         // Maybe seperate this into thead and tbody somehow
-        border-bottom: 1px solid red;
+        th {
+          width: min-content;
+          font-size: 18px;
+          padding: 0 10px;
+
+          .sortButton {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            color: white;
+            padding: 0;
+
+            .arrowUp,
+            .arrowDown {
+              font-size: 25px;
+
+              &.active {
+                color: red;
+              }
+
+              &:first-of-type {
+                padding-inline-start: 5px;
+              }
+            }
+          }
+        }
       }
     }
 
@@ -20,6 +50,9 @@
       cursor: pointer;
       color: white;
       background-color: #303030;
+
+
+
 
       th,
       td {
@@ -53,6 +86,7 @@
       transition: border-bottom 0.2s ease;
 
       &+.collapsible-table-row {
+        transform: translateY(-3px);
         border-bottom: 1px solid red;
         transition: border-bottom 0.2s ease;
 

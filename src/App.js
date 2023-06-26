@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './basics/reset.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BeersContextProvider from './context/BeersContext';
 import Navbar from './components/Navbar';
 import Overview from './pages/Overview';
 import ShowcaseSlider from './pages/ShowcaseSlider';
+import AddBeerForm from './pages/AddBeerForm';
 
 const App = () => {
+  const [selectedView, setSelectedView] = useState('overview');
+
+  const handleViewChange = (view) => setSelectedView(view);
+
   return (
     <BeersContextProvider>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Overview />} />
-          <Route path="/showcase" element={<ShowcaseSlider />} />
-        </Routes>
-      </Router>
+      <Navbar onViewChange={handleViewChange} />
+      {selectedView === 'overview' && <Overview />}
+      {selectedView === 'showcase' && <ShowcaseSlider />}
+      {selectedView === 'addbeer' && <AddBeerForm />}
     </BeersContextProvider>
   );
 };

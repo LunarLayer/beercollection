@@ -2,14 +2,16 @@ import React from 'react';
 
 import './Navbar.scss';
 
-const Navbar = () => {
+const Navbar = ({onViewChange}) => {
+  const handleClick = (view) => onViewChange(view);
+
   return (
     <>
       <nav id='navbar'>
         <ul>
-          <li><a href="/">Overview</a></li>
-          <li><a href="/showcase">Showcase</a></li>
-          <li><a href="/add">Add new beer</a></li>
+          <li><button onClick={() => onViewChange('overview')}>Overview</button></li>
+          <li><button onClick={() => onViewChange('showcase')}>Showcase</button></li>
+          <li><button onClick={() => onViewChange('addbeer')}>Add new beer</button></li>
         </ul>
       </nav>
     </>
