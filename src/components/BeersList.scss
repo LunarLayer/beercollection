@@ -1,6 +1,8 @@
 #beersList {
-  padding-inline: 20px;
-
+  max-height: 600px;
+  max-height: 100vh;
+  overflow: scroll;
+  padding-block-start: 10px;
   // flyt til overview
   table {
     margin-inline: auto;
@@ -8,6 +10,11 @@
     max-width: 1000px;
     border-collapse: separate;
     border-spacing: 0 3px;
+    margin-block-end: 20px;
+    
+    .hideOnMobile {
+      display: none;
+    }
 
     thead {
       tr {
@@ -96,6 +103,7 @@
           .flex-container {
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
 
             background-color: darkcyan;
 
@@ -104,6 +112,8 @@
             box-sizing: border-box;
             overflow: hidden;
             transition: max-height 0.2s, padding 0.2s;
+
+            flex-wrap: wrap;
           }
         }
       }
@@ -118,7 +128,7 @@
 
           td {
             .flex-container {
-              max-height: 100px;
+              max-height: 500px;
               padding: 10px;
               transition: max-height 0.4s, padding 0.4s;
             }
@@ -128,3 +138,23 @@
     }
   }
 }
+
+@media(min-width: 601px) {
+  #beersList {
+    padding-inline: 10px;
+    table {
+      .hideOnMobile {
+        display: table-cell;
+      }
+    }
+  }
+}
+
+@media(min-width: 801px) {
+  #beersList {
+    padding-inline: 20px;
+
+ 
+  }
+}
+

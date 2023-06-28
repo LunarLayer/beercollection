@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect } from 'react';
 
 import './BeersList.scss';
 
-import { BeersContext } from '../context/BeersContext';
+import { AppContext } from '../context/AppContext';
 
 import Tools from './Tools';
 import TableRow from './TableRow';
 
 const BeersList = () => {
-  const context = useContext(BeersContext);
+  const context = useContext(AppContext);
   const [beers, setBeers] = useState(null);
   const [expandedRows, setExpandedRows] = useState([]);
   const [sort, setSort] = useState({ parameter: null, direction: null });
@@ -126,10 +126,10 @@ const BeersList = () => {
               <th>
                 <SortButton title="First brew" sortBy="first_brew" />
               </th>
-              <th>
+              <th className='hideOnMobile'>
                 <SortButton title="rating" sortBy="rating" />
               </th>
-              <th>
+              <th className='hideOnMobile'>
                 <SortButton title="comments" sortBy="comments" />
               </th>
               <th>Showcase</th>

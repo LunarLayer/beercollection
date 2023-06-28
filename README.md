@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+### Notes:
+- Should have made components 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Guide:
+## Adding a beer
+- Only name is required; easier for testing purposes.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+### Scrollbar
+- Needs to come back on all sizes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ShowcaseSlider
+- can't highlight text on slides
+- Add arrows on the sides of the slide to guide the user, and
+  disable cursor swipe(?) for the benefit of the user able to copy text with ease.
+- Mash temp unit & duration shows even on entries without them
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Navbar
+- 
 
-### `npm run build`
+### AddBeerForm
+- <button type="button" onClick={() => appendMashTemp({ temp: { value: "", unit: "celsius" }, duration: "" })} />
+- the other append buttons dont have this line, check all of them for this for concurrency "and empty placeholders"
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Fields:
+# Name
+- Works
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Tagline
+- Works
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# First brewed
+- works
+(change from string to datepicker or similar) (react datepicker is... ugh...)
 
-### `npm run eject`
+# Food pairing 
+- Works
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Description
+- works
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Brewers tips
+- works
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Comments
+- works
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Mash
+- works
 
-## Learn More
+# Fermentation
+- works
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Twist
+- works

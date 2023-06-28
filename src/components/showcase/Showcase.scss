@@ -1,0 +1,274 @@
+.showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  h2 {
+    color: var(--header-color);
+  }
+
+  p {
+    max-width: 40ch;
+    max-width: 80vw;
+  }
+
+  ul {
+    margin-block: 0;
+
+    li {
+      max-width: 40ch;
+    }
+  }
+
+  table {
+    height: min-content;
+    border-collapse: separate;
+    border-spacing: 0 3px;
+
+    thead {
+      tr {
+        th {
+          padding-inline: 5px;
+          text-align: start;
+
+          &:first-child {
+            padding-inline-start: 0;
+          }
+
+          &:last-child {
+            padding-inline-end: 0;
+          }
+        }
+      }
+    }
+
+    tbody {
+      td {
+        padding-inline: 5px;
+        border-bottom: 1px solid black;
+
+        &:first-child {
+          padding-inline-start: 0;
+        }
+
+        &:last-child {
+          padding-inline-end: 0;
+        }
+      }
+    }
+  }
+
+  .image_rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-height: 300px;
+    }
+  }
+
+  .image_rating {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .subject_food-pairing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem 1rem;
+
+    .subject {
+      flex: 1;
+
+      >p {
+        white-space: nowrap;
+      }
+    }
+
+    .food-pairing {
+      flex: 1;
+
+      ul {
+        li {
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+
+  .brewers-tips_comments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .method_amount {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem 1rem;
+
+    .method {
+      width: 100%;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      .mash-temp-table {
+        padding-bottom: 1rem;
+      }
+
+      .fermentation-temp-table {
+        &+p {
+          padding-block-start: 1rem;
+        }
+      }
+    }
+
+    .amount {
+      width: 100%;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      .wrapper {
+        display: flex;
+        gap: 2rem;
+
+        table {
+
+          th,
+          td {
+            white-space: nowrap;
+          }
+        }
+
+        .table-1 {
+          flex: 1;
+          padding-bottom: 1rem;
+        }
+
+        .table-2 {
+          flex: 1;
+        }
+      }
+    }
+  }
+
+  .hops_malts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .hops-table,
+    .malts-table {
+      width: 100%;
+    }
+  }
+}
+
+
+@media(min-width: 601px) {
+  .showcase {
+    margin: 0 auto;
+    max-width: 1000px;
+    align-items: flex-start;
+    flex-direction: row;
+
+    p {
+      max-width: calc(80vw - 200px);
+    }
+
+    .image_rating {
+      position: fixed;
+      width: 150px;
+      max-width: 150px;
+
+      img {
+        width: auto;
+        height: auto;
+        max-height: none;
+      }
+    }
+
+    .details-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-inline-start: calc(150px + 2rem);
+
+      .method_amount {
+        .twist {
+
+        }
+        .amount {
+          .wrapper {
+            gap: 1rem;
+
+            .table-1 {
+              padding-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media(min-width: 801px) {
+  .showcase {
+    p {
+      max-width: 60ch;
+    }
+
+    .image_rating {
+      width: 200px;
+      max-width: 200px;
+
+      img {
+        width: auto;
+        height: auto;
+        max-height: 80vh;
+      }
+    }
+
+    .details-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-inline-start: calc(200px + 2rem);
+
+      .subject_food-pairing {
+        justify-content: space-between;
+        gap: 2rem 1rem;
+      }
+
+      .method_amount {
+        flex-direction: row;
+        gap: 2rem;
+
+        .method,
+        .amount {
+          flex: 1;
+          width: auto;
+        }
+
+        .method {
+          .mash-temp-table, .fermentation-temp-table {
+            white-space: nowrap;
+          }
+        }
+
+        .amount {
+          .table-1 {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

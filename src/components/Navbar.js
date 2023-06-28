@@ -3,8 +3,6 @@ import React from 'react';
 import './Navbar.scss';
 
 const Navbar = ({onViewChange}) => {
-  const handleClick = (view) => onViewChange(view);
-
   return (
     <>
       <nav id='navbar'>
