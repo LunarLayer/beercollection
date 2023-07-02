@@ -1,6 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-const TableRow = ({ beer, expanded, toggleDetails }) => {
+import './TableRow.scss';
+
+import { ReactComponent as ExpandUpIcon } from '../assets/expand-up-icon.svg';
+import { ReactComponent as ExpandDownIcon } from '../assets/expand-down-icon.svg';
+import { ReactComponent as BeerglassIcon } from '../assets/beer-icon.svg';
+
+import { AppContext } from '../context/AppContext';
+
+const TableRow = ({ beer, expanded, toggleDetails, setSelectedView }) => {
+  const context = useContext(AppContext);
+
+  const ExpandIcon = () => {
+    if (expanded) {
+      return (
+        <div className="expandUpIcon">
+          <ExpandUpIcon />
+        </div>
+      );
+    } else {
+      return (
+        <div className="expandDownIcon">
+          <ExpandDownIcon />
+        </div>
+      );
+    }
+  }
+
+
+
   return (
     <>
       <tr className={`table-row ${expanded ? "open" : ""}`} onClick={() => toggleDetails(beer.id)}>
@@ -8,7 +36,16 @@ const TableRow = ({ beer, expanded, toggleDetails }) => {
         <td>{beer.first_brewed}</td>
         <td className='hideOnMobile'><button>Rating</button></td>
         <td className='hideOnMobile'><button>1 Comment</button></td>
-        <td><button>Showcase</button></td>
+        <td className='details'>
+          <div className='details-wrapper'>
+            <button onClick={() => {
+              context.sortBeers("setBeerFirstInArray", "", beer.id)
+              setSelectedView('showcase');
+            }}>Details
+            </button>
+            <ExpandIcon />
+          </div>
+        </td>
       </tr>
       <tr className="collapsible-table-row">
         <td colSpan={5} onClick={() => toggleDetails(beer.id)}>

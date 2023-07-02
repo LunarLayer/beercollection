@@ -1,5 +1,6 @@
 ### Notes:
 - Should have made components 
+- Check if there's only 1 food pairing, does it make a p tag instead of a ul
 
 ### Guide:
 ## Adding a beer

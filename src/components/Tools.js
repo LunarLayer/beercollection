@@ -6,8 +6,7 @@ const Tools = ({toggleDetailedView}) => {
   return (
     <>
       <div id='tools'>
-        <button>Add</button>
-        <button onClick={() => toggleDetailedView()}>Detailed view</button>
+        <button onClick={() => toggleDetailedView()}>Expand all</button>
         <button>Filter</button>
       </div>
     </>

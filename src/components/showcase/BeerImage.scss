@@ -1,0 +1,13 @@
+.beerImage {
+  img {
+    max-height: 300px;
+  }
+}
+
+@media(min-width: 601px) {
+  .beerImage {
+    img {
+      max-height: calc(80vh - 30px);
+    }
+  }
+}

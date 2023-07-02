@@ -17,8 +17,6 @@ const AddBeer = () => {
     control,
   } = useForm();
 
-
-
   const { fields: foodPairings, append: appendFoodPairing, remove: removeFoodPairing } = useFieldArray({
     control,
     name: 'food_pairing',
@@ -48,7 +46,6 @@ const AddBeer = () => {
     const newBeerId = context.beers.length + 1;
     const foodPairingsStringArray = beer.food_pairing.map((pairing) => pairing.value);
     const commentsStringArray = beer.comment.map((comment) => comment.value);
-
     const newBeer = { ...beer, id: newBeerId, food_pairing: foodPairingsStringArray, comments: commentsStringArray };
 
     context.addBeer(newBeer)
@@ -57,15 +54,17 @@ const AddBeer = () => {
   const ShowcaseFields = () => {
     return (
       <div className='showcase form'>
-        <div className='image_rating'>
-          <img src={placeholder_image} alt="a beer" />
+        <div className='wrapper-image-rating'>
+          <div className='beerImage'>
+            <img src={placeholder_image} alt="a beer" />
+          </div>
           <div className='star-rating'>
             ✪✪✪✪✪
           </div>
         </div>
 
-        <div className='details-wrapper'>
-          <div className='subject_foodPairing'>
+        <div className='wrapper-details'>
+          <div className='subject-foodPairings'>
             <div className='subject'>
               <h2>Subject</h2>
               <label htmlFor="formName">Name</label>
@@ -83,18 +82,20 @@ const AddBeer = () => {
             </div>
             <div className='foodPairings'>
               <h2>Food pairing</h2>
-              {foodPairings.map((field, index) => (
-                <div className='foodPairing' key={field.id}>
-                  <input {...register(`food_pairing.${index}.value`, { required: true })} />
-                  <button type="button" onClick={() => removeFoodPairing(index)}>Remove</button>
-                  {errors.food_pairing && errors.food_pairing[index] && ( // TODO: This is placed oddly
-                    <span>Can't add empty food pairing</span>
-                  )}
-                </div>
-              ))}
-              <button type="button" onClick={() => appendFoodPairing({ value: '' })}>
-                Add Food Pairing
-              </button>
+              <div className='flex-container'>
+                {foodPairings.map((field, index) => (
+                  <div className='foodPairing' key={field.id}>
+                    <input {...register(`food_pairing.${index}.value`, { required: true })} />
+                    <button type="button" onClick={() => removeFoodPairing(index)}>Remove</button>
+                    {errors.food_pairing && errors.food_pairing[index] && ( // TODO: This is placed oddly
+                      <span>Can't add empty food pairing</span>
+                    )}
+                  </div>
+                ))}
+                <button type="button" onClick={() => appendFoodPairing({ value: '' })}>
+                  Add Food Pairing
+                </button>
+              </div>
             </div>
           </div>
 
@@ -108,9 +109,9 @@ const AddBeer = () => {
             />
           </div>
 
-          <div className='brewersTips_comments'>
-            <div className='brewersTips'>
-              <h2>Brewers tips</h2>
+          <div className='brewersTip-comments'>
+            <div className='brewersTip'>
+              <h2>Brewers tip</h2>
               <textarea
                 {...register("brewers_tips")} rows={1} onInput={(e) => {
                   e.target.rows = 1;
@@ -119,33 +120,35 @@ const AddBeer = () => {
             </div>
             <div className='comments'>
               <h2>Comments</h2>
-              {comments.map((field, index) => (
-                <div className='comment' key={field.id}>
-                  <input
-                    {...register(`comment.${index}.value`, { required: true })}
-                    defaultValue={field.value}
-                  />
-                  <button type="button" onClick={() => removeComment(index)}>
-                    Remove
-                  </button>
-                  {errors.comment && errors.comment[index] && ( // TODO: This is placed oddly
-                    <span>Can't add empty comment</span>
-                  )}
-                </div>
-              ))}
-              <button type="button" onClick={() => appendComment({ value: '' })}>
-                Add Comment
-              </button>
+              <div className='flex-container'>
+                {comments.map((field, index) => (
+                  <div className='comment' key={field.id}>
+                    <input
+                      {...register(`comment.${index}.value`, { required: true })}
+                      defaultValue={field.value}
+                    />
+                    <button type="button" onClick={() => removeComment(index)}>
+                      Remove
+                    </button>
+                    {errors.comment && errors.comment[index] && ( // TODO: This is placed oddly
+                      <span>Can't add empty comment</span>
+                    )}
+                  </div>
+                ))}
+                <button type="button" onClick={() => appendComment({ value: '' })}>
+                  Add Comment
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className='method_amount'>
+          <div className='method-amount'>
             <div className='method'>
               <h2>Method</h2>
               {mash_temps.map((field, index) => (
                 <div key={field.id} className='mash-entry'>
                   <div className='mash-temperature'>
-                    <input placeholder="Temperature" {...register(`method.mash_temp.${index}.temp.value`, { required: true })} />
+                    <input placeholder="Mash temperature" {...register(`method.mash_temp.${index}.temp.value`, { required: true })} />
                     <select defaultValue="celsius" {...register(`method.mash_temp.${index}.temp.unit`)} >
                       <option value="celsius">°C</option>
                       <option value="fahrenheit">°F</option>
@@ -165,7 +168,7 @@ const AddBeer = () => {
               </button>
               <div className='fermentation-temperature'>
                 <label htmlFor="formFermentationTemperature">Fermentation temperature</label>
-                <div className='wrapper'>
+                <div className='flex-container'>
                   <input id="formFermentationTemperature" className='fermentation-info' {...register(`method.fermentation.temp.value`)} />
                   <select defaultValue="celsius" {...register("method.fermentation.temp.unit")}>
                     <option value="celsius">°C</option>
@@ -182,92 +185,92 @@ const AddBeer = () => {
             </div>
             <div className='amount'>
               <h2>Amount</h2>
-              <table className='table-1'>
-                <tbody>
-                  <tr>
-                    <td>
-                      <label htmlFor="formABV">ABV</label>
-                      <input id="formABV" {...register(`abv`)} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label htmlFor="formIBU">IBU</label>
-                      <input id="formIBU" {...register(`ibu`)} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label htmlFor="formEBC">EBC</label>
-                      <input id="formEBC" {...register(`ebc`)} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label htmlFor="formSRM">SRM</label>
-                      <input id="formSRM" {...register(`srm`)} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label htmlFor="formPH">pH</label>
-                      <input id="formPH" {...register(`ph`)} />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className='table-2'>
-                <tbody>
-                  <tr>
-                    <td>
-                      <label htmlFor="formTargetFG">Target FG</label>
-                      <input id="formTargetFG" {...register(`target_fg`)} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label htmlFor="formTargetOG">Target OG</label>
-                      <input id="formTargetOG" {...register(`target_og`)} />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label htmlFor="formVolume">Volume</label>
-                      <div className='formVolumeWrapper'>
-                        <input id="formVolume" {...register(`volume.value`)} />
-                        <select {...register(`volume.unit`)}>
-                          <option value="liters">Litres</option>
-                          <option value="decilitre">Decilitres</option>
-                        </select>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label htmlFor="formBoilVolume">Boil Volume</label>
-                      <div className='formBoilVolumeWrapper'>
-                      <input id="formBoilVolume" {...register(`boil_volume.value`)} />
-                      <select {...register(`boil_volume.unit`)}>
-                        <option value="liters">Litres</option>
-                        <option value="decilitre">Decilitres</option>
-                      </select>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label htmlFor="formAttenuationLevel">Attenuation level</label>
-                      <input id="formAttenuationLevel" {...register(`attenuation_level`)} />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className='flex-container'>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <label htmlFor="formABV">ABV:</label>
+                        <input id="formABV" {...register(`abv`)} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="formIBU">IBU:</label>
+                        <input id="formIBU" {...register(`ibu`)} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="formEBC">EBC:</label>
+                        <input id="formEBC" {...register(`ebc`)} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="formSRM">SRM:</label>
+                        <input id="formSRM" {...register(`srm`)} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="formPH">pH:</label>
+                        <input id="formPH" {...register(`ph`)} />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <label htmlFor="formTargetFG">Target FG:</label>
+                        <input id="formTargetFG" {...register(`target_fg`)} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="formTargetOG">Target OG:</label>
+                        <input id="formTargetOG" {...register(`target_og`)} />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="formVolume">Volume:</label>
+                        <div className='formVolumeWrapper'>
+                          <input id="formVolume" {...register(`volume.value`)} />
+                          <select {...register(`volume.unit`)}>
+                            <option value="liters">Litres</option>
+                            <option value="decilitre">Decilitres</option>
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="formBoilVolume">Boil Volume:</label>
+                          <input id="formBoilVolume" {...register(`boil_volume.value`)} />
+                          <select {...register(`boil_volume.unit`)}>
+                            <option value="liters">Litres</option>
+                            <option value="decilitre">Decilitres</option>
+                          </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label htmlFor="formAttenuationLevel">Attenuation level:</label>
+                        <input id="formAttenuationLevel" {...register(`attenuation_level`)} />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
-          <div className='hops_malts'>
+          <div className='hops-malts'>
             <div className='hops'>
-            <h2>Hops</h2>
+              <h2>Hops</h2>
               {hops.map((field, index) => (
                 <div className="hops-entry" key={field.id}>
                   <input placeholder="Name" {...register(`ingredients.hops.${index}.name`)} />
@@ -294,7 +297,7 @@ const AddBeer = () => {
             </div>
 
             <div className="malts">
-            <h2>Malts</h2>
+              <h2>Malts</h2>
               {malts.map((field, index) => (
                 <div className="malts-entry" key={field.id}>
                   <input placeholder="Name" {...register(`ingredients.malt.${index}.name`)} />

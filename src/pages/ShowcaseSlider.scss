@@ -1,4 +1,4 @@
-#showcaseSlider {
+.showcaseSlider {
   .swiper {
 
     .swiper-arrow-left,
@@ -9,45 +9,46 @@
       right: 2px;
       top: 50%;
       transform: translateY(-50%);
-      width: 10px;
+
+      display: flex;
+      width: 50px;
+      height: 50px;
+
+      img {
+        width: 10px;
+      }
     }
 
     .swiper-arrow-left {
+      justify-content: flex-start;
       left: 2px;
+    }
+    .swiper-arrow-right {
+      justify-content: flex-end;
     }
 
     .swiper-slide {
-      padding-block-start: 1rem;
-      padding-block-end: 500px;
-      padding-block-end: 50vh;
-      max-height: 600px;
-      max-height: calc(100vh - 30px); // detract navbar // TODO: adjust as navbar develops accordingly
-      overflow: auto;
+      padding-block: 1rem;
       padding-inline: 1rem;
-
-      @media(max-width: 600px) {
-        &::-webkit-scrollbar {
-          display: none;
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      }
     }
   }
 }
 
 @media(min-width: 601px) {
-  #showcaseSlider {
+  .showcaseSlider {
     .swiper {
-
       .swiper-arrow-left,
       .swiper-arrow-right {
-        width: 20px;
-        right: calc(5px + 15px); // Quick fix, better to get scrollbar width with js
+        img {
+          width: 20px;
+        }
       }
 
       .swiper-arrow-left {
         left: 5px;
+      }
+      .swiper-arrow-right {
+        right: 5px;
       }
 
       .swiper-slide {
@@ -58,17 +59,21 @@
 }
 
 @media(min-width: 801px) {
-  #showcaseSlider {
+  .showcaseSlider {
     .swiper {
 
       .swiper-arrow-left,
       .swiper-arrow-right {
-        width: 25px;
-        right: calc(10px + 15px); // Quick fix, better to get scrollbar width with js
+        img {
+          width: 25px;
+        }
       }
 
       .swiper-arrow-left {
         left: 10px;
+      }
+      .swiper-arrow-right {
+        right: 10px;
       }
 
       .swiper-slide {

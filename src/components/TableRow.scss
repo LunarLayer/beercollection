@@ -1,0 +1,36 @@
+.table-row {
+  background-color: red;
+  border: 5px solid hotpink;
+
+
+  .details-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+
+    .expandDownIcon,
+    .expandUpIcon {
+      display: flex;
+      align-items: center;
+
+      svg {
+        height: 25px;
+        width: 25px;
+
+        path {
+          stroke: white;
+        }
+      }
+    }
+
+    .expandUpIcon {
+      svg {
+        path {
+          stroke: var(--active-color);
+        }
+      }
+    }
+
+  }
+}

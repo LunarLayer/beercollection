@@ -2,15 +2,25 @@ import React from 'react';
 
 import './Navbar.scss';
 
-const Navbar = ({onViewChange}) => {
+const Navbar = ({ onViewChange, selectedView }) => {
   return (
     <>
-      <nav id='navbar'>
-        <ul>
-          <li><button onClick={() => onViewChange('overview')}>Overview</button></li>
-          <li><button onClick={() => onViewChange('showcase')}>Showcase</button></li>
-          <li><button onClick={() => onViewChange('addbeer')}>Add new beer</button></li>
-        </ul>
+      <nav className='navbar'>
+        <button
+          className={selectedView === "beersList" ? "active" : ""}
+          onClick={() => onViewChange('beersList')}>
+          Beers
+        </button>
+        <button
+          className={selectedView === "showcase" ? "active" : ""}
+          onClick={() => onViewChange('showcase')}>
+          Showcase
+        </button>
+        <button
+          className={selectedView === "addBeer" ? "active" : ""}
+          onClick={() => onViewChange('addBeer')}>
+          Add new beer
+        </button>
       </nav>
     </>
   );

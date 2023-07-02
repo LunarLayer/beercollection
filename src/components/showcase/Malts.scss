@@ -1,0 +1,48 @@
+.malts {
+  h2 {
+    color: var(--header-color);
+  }
+
+  table {
+    width: 100%;
+    height: min-content;
+    border-collapse: separate;
+    border-spacing: 0 3px;
+
+    thead {
+      tr {
+        th {
+          color: var(--subheader-color);
+          padding-inline: 0.5rem;
+          text-align: start;
+
+          &:first-child {
+            padding-inline-start: 0;
+          }
+
+          &:last-child {
+            text-align: end;
+            padding-inline-end: 0;
+          }
+        }
+      }
+    }
+
+    tbody {
+      td {
+        white-space: nowrap;
+        padding-inline: 0.5rem;
+        border-bottom: 1px solid black;
+
+        &:first-child {
+          padding-inline-start: 0;
+        }
+
+        &:last-child {
+          text-align: end;
+          padding-inline-end: 0;
+        }
+      }
+    }
+  }
+}
