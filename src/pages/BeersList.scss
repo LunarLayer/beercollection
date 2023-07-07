@@ -1,125 +1,119 @@
 .beersList {
-  padding-block: 10px;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin-inline: auto;
+  padding-block-start: 1rem;
 
   table {
-    margin-inline: auto;
     width: 100%;
-    max-width: 1000px;
-    border-collapse: separate;
-    border-spacing: 0 3px;
-    
+    border-collapse: collapse;
+
     .hideOnMobile {
       display: none;
     }
 
     thead {
       tr {
-        cursor: default;
         th {
-          width: min-content;
-          font-size: 18px;
-          padding: 0 10px;
+          text-align: start;
+
+          padding-inline-start: 10px;
+          padding-block: 10px;
+
+          button {
+            white-space: nowrap;
+          }
+
+          &:last-child {
+            padding-inline-end: 10px;
+          }
 
           .sortButton {
             cursor: pointer;
             display: flex;
             align-items: center;
-            background-color: transparent;
+            background-color: white;
             border: none;
-            color: white;
             padding: 0;
 
-            .arrowUp,
-            .arrowDown {
-              font-size: 20px;
+            .sortArrows {
+              display: flex;
 
-              &.active {
-                color: red;
+              &.asc {
+                svg {
+                  .sortArrowsUp {
+                    fill: var(--active-color);
+                  }
+                }
               }
 
-              &:first-of-type {
-                padding-inline-start: 5px;
+              &.desc {
+                svg {
+                  .sortArrowsDown {
+                    fill: var(--active-color);
+                  }
+                }
               }
+            }
+
+
+
+            svg {
+              max-width: 25px;
+              max-height: 25px;
             }
           }
         }
       }
     }
-  
 
-    tr {
-      cursor: pointer;
-      color: white;
-      background-color: #303030;
-
-
-
-
-      th,
-      td {
-        padding: 10px;
-
-        &:nth-child(1),
-        &:nth-child(2) {
-          text-align: start;
-        }
-
-        &:nth-child(5) {
-          text-align: start;
-        }
-
-        button {
-          white-space: nowrap;
-        }
-      }
-
-      &:has(th) {
-        background-color: #454545;
-      }
-    }
-
-    .table-row {
-      transition: border-bottom 0.2s ease;
-
-      &+.collapsible-table-row {
-        transform: translateY(-3px);
-        border-bottom: 1px solid red;
-        transition: border-bottom 0.2s ease;
-
+    tbody {
+      .table-row {
+        cursor: pointer;
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
         td {
-          padding: 0;
+          padding-inline-start: 10px;
+          padding-block: 10px;
 
-          .flex-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 1rem;
-
-            background-color: darkcyan;
-
-            max-height: 0;
-            padding: 0 10px;
-            box-sizing: border-box;
-            overflow: hidden;
-            transition: max-height 0.2s, padding 0.2s;
-
-            flex-wrap: wrap;
+          &:last-child {
+            padding-inline-end: 10px;
           }
         }
-      }
 
-      &.open {
-        border-bottom: none;
+        &.open {
+          &+.collapsible-details {
+            td {
+              .flex-container {
+                max-height: 500px;
+                padding: 10px;
+                transition: max-height 0.4s, padding 0.4s;
+              }
+            }
+          }
+        }
 
-        &+.collapsible-table-row {
-          border-top: 1px dotted black;
-          border-bottom: 1px solid red;
-          transition: border-bottom 0s;
+        &+.collapsible-details {
+          border-left: 1px solid black;
+          border-right: 1px solid black;
+          transform: translateY(-3px);
 
           td {
+            padding: 0;
+
             .flex-container {
-              max-height: 500px;
-              padding: 10px;
-              transition: max-height 0.4s, padding 0.4s;
+        
+              display: flex;
+              justify-content: space-between;
+              gap: 1rem;
+
+              max-height: 0;
+              padding: 0 10px;
+              overflow: hidden;
+              transition: max-height 0.2s, padding 0.2s;
+              flex-wrap: wrap;
             }
           }
         }
@@ -128,9 +122,137 @@
   }
 }
 
+// .beersList {
+//   padding-block: 10px;
+
+//   table {
+//     background-color: white;
+//     color: black;
+//     margin-inline: auto;
+//     width: 100%;
+//     max-width: 1000px;
+//     border-collapse: separate;
+//     border-spacing: 0 2px;
+
+//     .hideOnMobile {
+//       display: none;
+//     }
+
+//     thead {
+//       tr {
+//         cursor: default;
+
+//         th {
+//           width: min-content;
+//           font-size: 18px;
+//           padding: 0 10px;
+
+//           .sortButton {
+//             cursor: pointer;
+//             display: flex;
+//             align-items: center;
+
+//             border: none;
+//             color: white;
+//             padding: 0;
+
+//             .arrowUp,
+//             .arrowDown {
+//               font-size: 20px;
+
+//               &.active {
+//                 color: var(--active-color);
+//               }
+
+//               &:first-of-type {
+//                 padding-inline-start: 2px;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+
+
+//     tr {
+//       cursor: pointer;
+//       color: white;
+//       background-color: #303030;
+
+//       th,
+//       td {
+//         padding: 5px 10px;
+
+//         &:nth-child(1),
+//         &:nth-child(2) {
+//           text-align: start;
+//         }
+
+//         &:nth-child(5) {
+//           text-align: start;
+//         }
+
+//         button {
+//           white-space: nowrap;
+//         }
+//       }
+
+//       &:has(th) {
+//         background-color: white;
+
+//         th {
+//           color: black;
+//         }
+//       }
+//     }
+
+//     .table-row {
+//       &+.collapsible-table-row {
+//         transform: translateY(-3px);
+
+//         td {
+//           padding: 0;
+
+//           .flex-container {
+//             display: flex;
+//             justify-content: space-between;
+//             gap: 1rem;
+
+//             // background-color: #303030;
+
+//             max-height: 0;
+//             padding: 0 10px;
+//             box-sizing: border-box;
+//             overflow: hidden;
+//             transition: max-height 0.2s, padding 0.2s;
+//             flex-wrap: wrap;
+//           }
+//         }
+//       }
+
+//       &.open {
+//         border-bottom: none;
+
+//         &+.collapsible-table-row {
+//           transition: border-bottom 0s;
+
+//           td {
+//             .flex-container {
+//               max-height: 500px;
+//               padding: 10px;
+//               transition: max-height 0.4s, padding 0.4s;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
 @media(min-width: 601px) {
   .beersList {
     padding-inline: 10px;
+
     table {
       .hideOnMobile {
         display: table-cell;
@@ -142,8 +264,5 @@
 @media(min-width: 801px) {
   .beersList {
     padding-inline: 20px;
-
- 
   }
 }
-

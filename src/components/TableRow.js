@@ -8,7 +8,7 @@ import { ReactComponent as BeerglassIcon } from '../assets/beer-icon.svg';
 
 import { AppContext } from '../context/AppContext';
 
-const TableRow = ({ beer, expanded, toggleDetails, setSelectedView }) => {
+const TableRow = ({ beer, expanded, toggleDetails, setSelectedView, dark }) => {
   const context = useContext(AppContext);
 
   const ExpandIcon = () => {
@@ -31,7 +31,7 @@ const TableRow = ({ beer, expanded, toggleDetails, setSelectedView }) => {
 
   return (
     <>
-      <tr className={`table-row ${expanded ? "open" : ""}`} onClick={() => toggleDetails(beer.id)}>
+      <tr className={`table-row ${expanded ? "open" : ""} ${dark ? "dark" : ""}`} onClick={() => toggleDetails(beer.id)}>
         <td>{beer.name}</td>
         <td>{beer.first_brewed}</td>
         <td className='hideOnMobile'><button>Rating</button></td>
@@ -47,7 +47,7 @@ const TableRow = ({ beer, expanded, toggleDetails, setSelectedView }) => {
           </div>
         </td>
       </tr>
-      <tr className="collapsible-table-row">
+      <tr className={`collapsible-details ${dark ? "dark" : ""}`}>
         <td colSpan={5} onClick={() => toggleDetails(beer.id)}>
           <div className='flex-container'>
             <div>

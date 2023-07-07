@@ -3,14 +3,13 @@ import React, { useContext } from 'react';
 import './ShowcaseSlider.scss';
 
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-// import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper"; // need all these?
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import rightArrow from '../assets/swiper-right-arrow.svg';
-import LeftArrow from '../assets/swiper-left-arrow.svg';
+import { ReactComponent as RightArrow } from '../assets/swiper-right-arrow.svg';
+import { ReactComponent as LeftArrow } from '../assets/swiper-left-arrow.svg';
 
 import Showcase from '../components/Showcase';
 
@@ -23,7 +22,7 @@ const ShowcaseSlider = ({setSelectedView}) => {
     const swiper = useSwiper();
     return (
       <div className="swiper-arrow-right" onClick={() => swiper.slideNext()}>
-        <img src={rightArrow} alt="Arrow pointing to the right" />
+        <RightArrow />
       </div>
     );
   }
@@ -31,7 +30,7 @@ const ShowcaseSlider = ({setSelectedView}) => {
     const swiper = useSwiper();
     return (
       <div className="swiper-arrow-left" onClick={() => swiper.slidePrev()}>
-        <img src={LeftArrow} alt="Arrow pointing to the left" /> 
+        <LeftArrow /> 
       </div>
     );
   }

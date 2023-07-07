@@ -5,6 +5,16 @@
     color: var(--header-color);
   }
 
+  h4 {
+    color: var(--subheader-color);
+  }
+
+  p {
+    strong {
+      color: var(--subheader-color);
+    }
+  }
+
   .flex-container {
     display: flex;
     flex-direction: column;
@@ -59,6 +69,12 @@
           }
         }
       }
+    }
+
+    .Fermentation-temperature {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
     }
     .twist {
       max-width: 80%;

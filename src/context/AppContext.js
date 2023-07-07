@@ -96,6 +96,8 @@ const AppContextProvider = ({ children }) => {
 
   const addBeer = (newBeer) => {
     setBeers([...beers, newBeer]);
+
+    console.log(newBeer);
   };
 
   useEffect(() => {

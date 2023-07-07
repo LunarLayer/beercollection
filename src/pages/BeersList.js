@@ -4,13 +4,17 @@ import './BeersList.scss';
 
 import { AppContext } from '../context/AppContext';
 
+import { ReactComponent as SortArrowsUpDown } from '../assets/sort-arrows.svg';
+
 import Tools from '../components/Tools';
 import TableRow from '../components/TableRow';
+import FilterModal from '../components/FilterModal';
 
-const BeersList = ({setSelectedView}) => {
+const BeersList = ({ setSelectedView }) => {
   const context = useContext(AppContext);
   const [expandedRows, setExpandedRows] = useState([]);
   const [sort, setSort] = useState({ parameter: null, direction: null });
+  const [filterModalOpen, setFilterModalOpen] = useState(false);
 
   useEffect(() => {
     if (!sort.parameter) {
@@ -51,54 +55,66 @@ const BeersList = ({setSelectedView}) => {
   };
 
   const SortButton = ({ title, sortBy }) => {
+    const SortArrows = ({ sortBy }) => {
+      return (
+        <div className={`sortArrows ${sort.parameter === sortBy && sort.direction === "desc" ? "desc" : sort.parameter === sortBy && sort.direction === "asc" ? "asc" : ""}`}>
+          <SortArrowsUpDown />
+        </div>
+      );
+    }
+
     return (
       <button className="sortButton" onClick={() => sortListBy(sortBy)}>
         {title}
-        <span className={`arrowDown ${sort.parameter === sortBy && sort.direction === "desc" ? "active" : ""}`}>&#8595;</span>
-        <span className={`arrowUp ${sort.parameter === sortBy && sort.direction === "asc" ? "active" : ""}`}>&#8593;</span>
+        <SortArrows sortBy={sortBy} />
       </button>
     )
   }
 
+
   return (
     <div className='beersList'>
-      <Tools toggleDetailedView={toggleDetailedView} />
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <SortButton title="Name" sortBy="name" />
-            </th>
-            <th>
-              <SortButton title="First brew" sortBy="first_brew" />
-            </th>
-            <th className='hideOnMobile'>
-              <SortButton title="rating" sortBy="rating" />
-            </th>
-            <th className='hideOnMobile'>
-              <SortButton title="comments" sortBy="comments" />
-            </th>
-            <th>Details</th>
-          </tr>
-        </thead>
-        <tbody>
-          {context.beers ? (
-            context.beers.map((beer) => (
-              <TableRow
-                key={beer.id}
-                beer={beer}
-                expanded={expandedRows.includes(beer.id)}
-                toggleDetails={toggleDetails}
-                setSelectedView={setSelectedView}
-              />
-            ))
-          ) : (
+      <Tools toggleDetailedView={toggleDetailedView} filterModalOpen={filterModalOpen} setFilterModalOpen={setFilterModalOpen} />
+      {filterModalOpen ? (
+        <FilterModal setFilterModalOpen={setFilterModalOpen} />
+      ) : (
+        <table>
+          <thead>
             <tr>
-              <td>Loading beers</td>
+              <th>
+                <SortButton title="Name" sortBy="name" />
+              </th>
+              <th>
+                <SortButton title="First brew" sortBy="first_brew" />
+              </th>
+              <th className='hideOnMobile'>
+                <SortButton title="rating" sortBy="rating" />
+              </th>
+              <th className='hideOnMobile'>
+                <SortButton title="comments" sortBy="comments" />
+              </th>
+              <th>Details</th>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {context.beers ? (
+              context.beers.map((beer) => (
+                <TableRow
+                  key={beer.id}
+                  beer={beer}
+                  expanded={expandedRows.includes(beer.id)}
+                  toggleDetails={toggleDetails}
+                  setSelectedView={setSelectedView}
+                />
+              ))
+            ) : (
+              <tr>
+                <td>Loading beers</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

@@ -20,10 +20,15 @@
     background-color: var(--navbar-color);
     border: 0;
     padding-inline: 1rem;
+    // transition: 0;
 
     &.active {
       color: black;
       background-color: white;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      margin-block-start: 15px;
+      transition: all 0.2s ease;
 
       &:hover {
         text-decoration: none;

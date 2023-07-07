@@ -1,7 +1,12 @@
 .amount {
   min-width: 250px;
+
   h2 {
     color: var(--header-color);
+  }
+
+  h4 {
+    color: var(--subheader-color);
   }
 
   .flex-container {

@@ -2,14 +2,20 @@ import React from 'react';
 
 import './Tools.scss';
 
-const Tools = ({toggleDetailedView}) => {
+const Tools = ({ toggleDetailedView, filterModalOpen, setFilterModalOpen }) => {
+  const toggleFilterModal = () => {
+    if (filterModalOpen) {
+      setFilterModalOpen(false);
+    } else {
+      setFilterModalOpen(true);
+    }
+  }
+
   return (
-    <>
-      <div id='tools'>
-        <button onClick={() => toggleDetailedView()}>Expand all</button>
-        <button>Filter</button>
-      </div>
-    </>
+    <div id='tools'>
+      <button onClick={() => toggleFilterModal()}>Filter</button>
+      <button onClick={() => toggleDetailedView()}>Expand all</button>
+    </div>
   );
 };
 

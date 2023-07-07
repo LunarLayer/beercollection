@@ -9,10 +9,10 @@ const Hops = ({ hops }) => {
       <table className='hops-table'>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Add</th>
-            <th>Attribute</th>
+            <th><h4>Name</h4></th>
+            <th><h4>Amount</h4></th>
+            <th><h4>Add</h4></th>
+            <th><h4>Attribute</h4></th>
           </tr>
         </thead>
         <tbody>

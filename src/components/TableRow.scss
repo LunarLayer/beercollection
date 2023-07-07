@@ -1,7 +1,5 @@
 .table-row {
-  background-color: red;
-  border: 5px solid hotpink;
-
+  // border: 5px solid hotpink;
 
   .details-wrapper {
     display: flex;
@@ -11,6 +9,7 @@
 
     .expandDownIcon,
     .expandUpIcon {
+      cursor: pointer;
       display: flex;
       align-items: center;
 
@@ -19,7 +18,7 @@
         width: 25px;
 
         path {
-          stroke: white;
+          stroke: black;
         }
       }
     }

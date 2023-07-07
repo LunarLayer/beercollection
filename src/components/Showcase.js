@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import './Showcase.scss';
+
+import { ReactComponent as CloseIcon } from '../assets/close-icon.svg';
 
 import BeerImage from './showcase/BeerImage';
 import Rating from './showcase/Rating';
@@ -14,27 +16,37 @@ import Amount from './showcase/Amount';
 import Hops from './showcase/Hops';
 import Malts from './showcase/Malts';
 
-const Showcase = ({ beer, setSelectedView}) => {
+import { AppContext } from '../context/AppContext';
+
+const Showcase = ({ beer, setSelectedView }) => {
+  const context = useContext(AppContext);
+
   const CloseButton = () => {
     return (
-      <button className="closeButton" onClick={() => setSelectedView('beersList')}>
-        Close
-      </button>
+      <div className="closeButton" onClick={() => setSelectedView('beersList')}>
+        <CloseIcon />
+      </div>
     );
   };
 
   return (
     <div className='showcase'>
-      <CloseButton />
+      {context.screenSize === "mobile" &&
+        <CloseButton />
+      }
+
       <div className='wrapper-image-rating'>
         <BeerImage image={beer.image_url} />
         <Rating />
       </div>
 
       <div className='wrapper-details'>
+        {context.screenSize !== "mobile" &&
+          <CloseButton />
+        }
         <div className='subject-foodPairings'>
           <Subject name={beer.name} firstBrewed={beer.first_brewed} tagline={beer.tagline} />
-          {beer.food_pairing &&
+          {beer.food_pairing.length !== 0 &&
             <FoodPairings foodPairingsArr={beer.food_pairing} />
           }
         </div>
@@ -53,8 +65,10 @@ const Showcase = ({ beer, setSelectedView}) => {
         </div>
 
         <div className='method-amount'>
+          {/* IT CANT CHECK THE temp.value, because there is no temp! */}
           {((beer.method.mash_temp.length !== 0 || beer.method.fermentation.temp.value || beer.method.twist) &&
             <Method method={beer.method} />
+
           )}
           {(beer.abv || beer.ibu || beer.ebc || beer.srm || beer.ph ||
             beer.target_fg || beer.target_og || beer.volume.value ||

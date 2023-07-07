@@ -9,8 +9,8 @@ const Malts = ({ malts }) => {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Amount</th>
+            <th><h4>Name</h4></th>
+            <th><h4>Amount</h4></th>
           </tr>
         </thead>
         <tbody>

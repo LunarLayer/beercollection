@@ -11,14 +11,14 @@ const Method = ({ method }) => {
         <table>
           <thead>
             <tr>
-              <th>Mash temperature</th>
-              <th>Unit</th>
-              <th>Duration</th>
+              <th><h4>Mash temperature</h4></th>
+              <th><h4>Unit</h4></th>
+              <th><h4>Duration</h4></th>
             </tr>
           </thead>
           <tbody>
             {method.mash_temp.map((mash, index) => (
-              <tr key={index} className='hop'>
+              <tr key={index}>
                 <td>{mash.temp.value || '-'}</td>
                 <td>{mash.temp.unit || '-'}</td>
                 <td>{mash.duration || '-'}</td>
@@ -28,20 +28,10 @@ const Method = ({ method }) => {
         </table>
       )}
       {((method.fermentation.temp.value && method.fermentation.temp.unit) &&
-        <table>
-          <thead>
-            <tr>
-              <th>Fermentation temperature</th>
-              <th>Unit</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{method.fermentation.temp.value}</td>
-              <td>{method.fermentation.temp.unit}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="Fermentation-temperature">
+          <h4>Fermentation temperature: </h4>
+          <p>{method.fermentation.temp.value} {method.fermentation.temp.unit}</p>
+        </div>
       )}
       {(method.twist &&
         <p className='twist'><strong>Twist: </strong>{method.twist}</p>
