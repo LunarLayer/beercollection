@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 
 import './BeersList.scss';
 
@@ -10,17 +10,9 @@ import Tools from '../components/Tools';
 import TableRow from '../components/TableRow';
 import FilterModal from '../components/FilterModal';
 
-const BeersList = ({ setSelectedView }) => {
+const BeersList = ({ setSelectedView, filterModalOpen, setFilterModalOpen }) => {
   const context = useContext(AppContext);
   const [expandedRows, setExpandedRows] = useState([]);
-  const [sort, setSort] = useState({ parameter: null, direction: null });
-  const [filterModalOpen, setFilterModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (!sort.parameter) {
-      context.setBeers(context.unsortedBeers)
-    }
-  }, [context, context.beers, context.unsortedBeers, sort.parameter]);
 
   function toggleDetails(beerId) {
     setExpandedRows((prevExpandedRows) => {
@@ -42,22 +34,33 @@ const BeersList = ({ setSelectedView }) => {
   }
 
   function sortListBy(parameter) {
-    if ((sort.parameter === null && sort.direction === null) || (sort.parameter !== parameter)) {
+    // no sort selected or a different sort is selected
+    if ((context.sortType.parameter === null && context.sortType.direction === null)
+      || (context.sortType.parameter !== parameter)) {
+      // sort with the new parameter
       context.sortBeers(parameter, "desc");
-      setSort({ parameter: parameter, direction: "desc" });
-    } else if (sort.direction === "desc") {
+      context.setSortType({ parameter: parameter, direction: "desc" });
+      // clicked a previously selected sort button
+    } else if (context.sortType.direction === "desc") {
       context.sortBeers(parameter, "asc");
-      setSort({ parameter: parameter, direction: "asc" });
-    } else if (sort.direction === "asc") {
-      context.setBeers(context.unsortedBeers);
-      setSort({ parameter: null, direction: null });
+      context.setSortType({ parameter: parameter, direction: "asc" });
+      // clicked a previously selected sort button
+    } else if (context.sortType.direction === "asc") {
+      // reset sort direction to null
+      // TODO: Reset to the order they came in from punkAPI (UX)
+      context.setSortType({ parameter: null, direction: null });
     }
   };
 
   const SortButton = ({ title, sortBy }) => {
     const SortArrows = ({ sortBy }) => {
       return (
-        <div className={`sortArrows ${sort.parameter === sortBy && sort.direction === "desc" ? "desc" : sort.parameter === sortBy && sort.direction === "asc" ? "asc" : ""}`}>
+        <div
+          className={
+            `sortArrows 
+            ${context.sortType.parameter === sortBy && context.sortType.direction === "desc"
+                ? "desc" : context.sortType.parameter === sortBy && context.sortType.direction === "asc"
+                  ? "asc" : ""}`}>
           <SortArrowsUpDown />
         </div>
       );
@@ -71,12 +74,15 @@ const BeersList = ({ setSelectedView }) => {
     )
   }
 
-
   return (
     <div className='beersList'>
-      <Tools toggleDetailedView={toggleDetailedView} filterModalOpen={filterModalOpen} setFilterModalOpen={setFilterModalOpen} />
+      <Tools
+        toggleDetailedView={toggleDetailedView}
+        filterModalOpen={filterModalOpen}
+        setFilterModalOpen={setFilterModalOpen} />
       {filterModalOpen ? (
-        <FilterModal setFilterModalOpen={setFilterModalOpen} />
+        <FilterModal
+          setFilterModalOpen={setFilterModalOpen} />
       ) : (
         <table>
           <thead>
@@ -93,7 +99,6 @@ const BeersList = ({ setSelectedView }) => {
               <th className='hideOnMobile'>
                 <SortButton title="comments" sortBy="comments" />
               </th>
-              <th>Details</th>
             </tr>
           </thead>
           <tbody>

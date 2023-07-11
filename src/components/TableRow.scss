@@ -1,12 +1,11 @@
 .table-row {
-  // border: 5px solid hotpink;
+  .beerName {
+    font-weight: 700;
+    color: var(--header-color);
+    text-align: start;
+  }
 
-  .details-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-
+  .expandIcon {
     .expandDownIcon,
     .expandUpIcon {
       cursor: pointer;
@@ -30,6 +29,5 @@
         }
       }
     }
-
   }
 }

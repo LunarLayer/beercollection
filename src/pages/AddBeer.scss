@@ -1,4 +1,5 @@
 .add-beer {
+  // TODO: Better styling
   .removeButton {
     cursor: pointer;
     color: red;
@@ -45,6 +46,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      gap: 0.5rem;
     }
   }
 
@@ -70,7 +72,6 @@
       }
     }
   }
-
 
   .brewersTip-comments {
     .comments {
@@ -160,18 +161,6 @@
           gap: 0.25rem;
         }
       }
-
-      // .fermentation-temperature {
-      //   .flex-container {
-      //     display: flex;
-      //     flex-direction: row;
-      //     align-items: center;
-
-      //     select {
-
-      //     }
-      //   }
-      // }
     }
 
     .amount {
@@ -183,7 +172,6 @@
 
             label {
               text-align: start;
-              // white-space: normal;
             }
           }
 
@@ -194,10 +182,6 @@
               gap: 0.25rem;
               white-space: normal;
               border-bottom: 0;
-
-              input {
-                
-              };
             }
           }
         }
@@ -208,7 +192,6 @@
   .hops-malts {
     flex-direction: column;
     .hops, .malts {
-      // width: 100%;
       table {
         tbody {
           tr {
@@ -266,421 +249,3 @@
     }
   }
 }
-
-//   padding-inline: 1rem;
-//   padding-block: 1rem;
-
-//   display: flex;
-//   flex-direction: column;
-
-//   .showcase.form {
-//     width: 1000px;
-//     max-width: 100%;
-
-//     .details-wrapper {
-//       display: flex;
-//       flex-direction: column;
-//       gap: 1rem;
-
-//       label {
-//         padding-right: 1rem;
-//       }
-
-//       input {
-//         width: 100%;
-//       }
-
-//       textarea {
-//         width: 100%;
-//       }
-
-//       select {
-//         border: 1px solid #ccc;
-//         vertical-align: top;
-//         height: 30px;
-//       }
-
-//       .subject_foodPairing {
-//         display: flex;
-//         flex-direction: column;
-//         gap: 1rem;
-
-//         .subject {
-//           display: flex;
-//           flex-direction: column;
-//         }
-
-//         .foodPairings {
-//           display: flex;
-//           flex-direction: column;
-
-//           .foodPairing {
-//             display: flex;
-//             align-items: flex-end;
-//             // padding-block-end: 0.5rem;
-//           }
-//         }
-//       }
-
-//       // .description {
-
-//       // }
-//       .brewersTips_comments {
-//         display: flex;
-//         flex-direction: column;
-//         gap: 1rem;
-
-//         .comments {
-//           display: flex;
-//           flex-direction: column;
-
-//           .comment {
-//             display: flex;
-//             align-items: flex-end;
-//           }
-//         }
-//       }
-
-//       .method_amount {
-//         gap: 1rem;
-
-//         .method {
-//           display: flex;
-//           flex-direction: column;
-//           // gap: 1rem;
-
-//           .mash-entry {
-//             display: flex;
-//             flex-direction: column;
-//             padding-block-end: 0.5rem;
-
-//             .mash-temperature {
-//               display: flex;
-//             }
-//           }
-
-//           .fermentation-temperature {
-//             display: flex;
-//             flex-direction: column;
-
-//             .wrapper {
-//               display: flex;
-//               padding-block-end: 0.5rem;
-//             }
-//           }
-//         }
-
-//         .amount {
-
-//           .table-1,
-//           .table-2 {
-//             border-collapse: collapse;
-
-//             td {
-//               border-bottom: none;
-//             }
-
-//             .formVolumeWrapper,
-//             .formBoilVolumeWrapper {
-//               display: flex;
-//             }
-//           }
-//         }
-//       }
-
-//       .hops_malts {
-//         gap: 0;
-
-//         .hops,
-//         .malts {
-//           padding-block-end: 1rem;
-
-//           .hops-entry,
-//           .malts-entry {
-//             padding-block-end: 0.5rem;
-//           }
-//         }
-//       }
-
-
-//     }
-//   }
-
-//   .submitButton {
-//     min-height: 60px;
-//   }
-// }
-
-// @media(min-width: 801px) {
-//   .add-beer {
-//     .showcase.form {
-//       input {
-//         // width: auto;
-//       }
-
-//       .details-wrapper {
-//         .subject_foodPairing {
-//           flex-direction: row;
-//           justify-content: space-between;
-
-//           .subject {
-//             flex: 1;
-//           }
-
-//           .foodPairings {
-//             flex: 1;
-//           }
-//         }
-
-//         .brewersTips_comments {
-//           flex-direction: row;
-//           justify-content: space-between;
-
-//           .brewersTips {
-//             flex: 1;
-//           }
-
-//           .comments {
-//             flex: 1;
-//           }
-//         }
-
-//         .method_amount {
-
-//           .method,
-//           .amount {
-//             flex: 1;
-//           }
-
-//         }
-
-//         .hops_malts {
-//           flex-direction: row;
-//           justify-content: space-between;
-//           gap: 1rem;
-
-//           .hops {
-//             flex: 1;
-
-//             .hops-entry {
-//               input {
-//                 width: auto;
-//               }
-//             }
-//           }
-
-//           .malts {
-//             flex: 1;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // .add-beer-form {
-// //   display: flex;
-// //   flex-direction: column;
-// //   align-items: center;
-// //   padding: 32px;
-
-// //   .errorMessage {
-// //     color: red;
-// //   }
-
-// //   textarea {
-// //     resize: none;
-// //     overflow: hidden;
-// //     width: 100%;
-// //   }
-
-// //   input {
-// //     width: 100%;
-// //   }
-
-// //   select {
-// //     width: auto;
-// //     padding: 3px 2px;
-// //   }
-
-// //   td {
-// //     display: flex;
-// //     max-width: 100%;
-// //   }
-// // }
-
-// // .showcase {
-// //   display: flex;
-// //   justify-content: flex-start;
-// //   gap: 2rem;
-
-// //   width: 100%;
-// //   max-width: 1000px;
-
-// //   strong {
-// //     font-weight: 500;
-// //   }
-
-// //   p {
-// //     hyphens: auto;
-// //     max-width: 60ch;
-// //   }
-
-// //   .image_rating {
-// //     display: flex;
-// //     flex-direction: column;
-// //     align-items: center;
-// //     gap: 1rem;
-// //     min-width: 220px; //
-
-// //     img {
-// //       max-height: 600px;
-
-// //     }
-// //   }
-
-// //   .details {
-// //     display: flex;
-// //     flex-direction: column;
-// //     gap: 1rem;
-// //     width: 100%;
-
-// //     .subject_foodPairing,
-// //     .brewersTips_comments,
-// //     .comments_details,
-// //     .method_amount {
-// //       display: flex;
-// //       flex-wrap: wrap;
-// //       gap: 2rem;
-
-
-
-// //       ul {
-// //         margin-block: 0;
-// //       }
-// //     }
-
-// //     .method_amount {
-// //       .mash-temp_fermentation {
-// //         display: flex;
-// //         flex-direction: column;
-
-// //         .mash-entry {
-// //           display: flex;
-// //           flex-direction: column;
-// //           padding-bottom: 1rem;
-
-// //           .mash-temperature {
-// //             display: flex;
-// //           }
-// //         }
-// //       }
-
-// //       .fermentation-temperature {
-// //         display: flex;
-// //       }
-// //     }
-
-// //     .hops_malts {
-// //       gap: 0;
-
-// //       .hops {
-// //         display: flex;
-// //         align-items: flex-end;
-// //         flex-wrap: wrap;
-// //         gap: 1rem;
-// //       }
-
-// //       .hops-entry {
-// //         display: flex;
-// //         flex-direction: column;
-// //       }
-// //     }
-
-// //     .amount {
-// //       display: flex;
-// //       flex-direction: column;
-// //       height: min-content;
-
-// //       @supports (display: grid) {
-// //         display: grid;
-// //         grid-template-rows: auto auto;
-// //         grid-template-columns: auto 1rem auto;
-
-// //         h3 {
-// //           grid-row: 1;
-// //         }
-
-// //         .table-1,
-// //         .table-2 {
-
-
-// //           td {}
-// //         }
-
-// //         .table-1 {
-// //           min-width: auto;
-// //           grid-row: 2;
-// //           grid-column: 1;
-// //         }
-
-// //         .table-2 {
-// //           min-width: auto;
-// //           grid-row: 2;
-// //           grid-column: 3;
-// //         }
-// //       }
-// //     }
-
-// //     .hops,
-// //     .malts {
-// //       table {
-// //         width: 100%;
-// //         border-collapse: separate;
-// //         border-spacing: 0 3px;
-
-// //         td {
-// //           border-bottom: 1px solid black;
-// //         }
-
-// //         thead {
-// //           tr {
-// //             th {
-// //               text-align: start;
-// //             }
-// //           }
-// //         }
-
-// //         tbody {
-// //           tr {
-// //             >td:first-child {
-// //               padding-inline-end: 15px;
-// //             }
-// //           }
-// //         }
-// //       }
-// //     }
-// //   }
-// // }

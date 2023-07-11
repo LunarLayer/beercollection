@@ -2,13 +2,16 @@ import React from 'react';
 
 import './Navbar.scss';
 
-const Navbar = ({ onViewChange, selectedView }) => {
+const Navbar = ({ onViewChange, selectedView, setFilterModalOpen }) => {
   return (
-    <>
-      <nav className='navbar'>
+    <nav className='navbar'>
+      <div className='navLinks'>
         <button
           className={selectedView === "beersList" ? "active" : ""}
-          onClick={() => onViewChange('beersList')}>
+          onClick={() => {
+            onViewChange('beersList');
+            setFilterModalOpen(false);
+          }}>
           Beers
         </button>
         <button
@@ -19,10 +22,11 @@ const Navbar = ({ onViewChange, selectedView }) => {
         <button
           className={selectedView === "addBeer" ? "active" : ""}
           onClick={() => onViewChange('addBeer')}>
-          Add new beer
+          Add beer
         </button>
-      </nav>
-    </>
+      </div>
+      <div className='bottom-border' />
+    </nav>
   );
 };
 

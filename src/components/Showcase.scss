@@ -38,55 +38,39 @@
       flex-wrap: wrap;
       gap: 1rem;
 
-      .subject {
-        flex: 1;
-      }
-
-      .foodPairings {
+      .subject, .foodPairings {
         flex: 1;
       }
     }
-  }
 
-  .brewersTip-comments {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 2rem;
+    .brewersTip-comments {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
 
-    .brewersTip {
-      flex: 1;
+      .brewersTip, .comments {
+        flex: 1;
+      }
     }
 
-    .comments {
-      flex: 1;
-    }
-  }
+    .method-amount {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
 
-  .method-amount {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 2rem;
-
-    .method {
-      flex: 1;
+      .method, .amount {
+        flex: 1;
+      }
     }
 
-    .amount {
-      flex: 1;
-    }
-  }
+    .hops-malts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
 
-  .hops-malts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 2rem;
-
-    .hops {
-      flex: 1;
-    }
-
-    .malts {
-      flex: 1;
+      .hops, .malts {
+        flex: 1;
+      }
     }
   }
 }

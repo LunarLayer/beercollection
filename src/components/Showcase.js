@@ -5,7 +5,6 @@ import './Showcase.scss';
 import { ReactComponent as CloseIcon } from '../assets/close-icon.svg';
 
 import BeerImage from './showcase/BeerImage';
-import Rating from './showcase/Rating';
 import Subject from './showcase/Subject';
 import FoodPairings from './showcase/FoodPairings';
 import Description from './showcase/Description';
@@ -37,7 +36,6 @@ const Showcase = ({ beer, setSelectedView }) => {
 
       <div className='wrapper-image-rating'>
         <BeerImage image={beer.image_url} />
-        <Rating />
       </div>
 
       <div className='wrapper-details'>
@@ -45,7 +43,7 @@ const Showcase = ({ beer, setSelectedView }) => {
           <CloseButton />
         }
         <div className='subject-foodPairings'>
-          <Subject name={beer.name} firstBrewed={beer.first_brewed} tagline={beer.tagline} />
+          <Subject name={beer.name} firstBrewed={beer.first_brewed} tagline={beer.tagline} beerId={beer.id} starRating={beer.starRating} />
           {beer.food_pairing.length !== 0 &&
             <FoodPairings foodPairingsArr={beer.food_pairing} />
           }
@@ -65,10 +63,8 @@ const Showcase = ({ beer, setSelectedView }) => {
         </div>
 
         <div className='method-amount'>
-          {/* IT CANT CHECK THE temp.value, because there is no temp! */}
           {((beer.method.mash_temp.length !== 0 || beer.method.fermentation.temp.value || beer.method.twist) &&
             <Method method={beer.method} />
-
           )}
           {(beer.abv || beer.ibu || beer.ebc || beer.srm || beer.ph ||
             beer.target_fg || beer.target_og || beer.volume.value ||

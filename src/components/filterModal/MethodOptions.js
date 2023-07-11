@@ -1,7 +1,5 @@
 import React from 'react';
 
-// import './MethodOptions.scss';
-
 const MethodOptions = ({setSelectedTitle, setSelectedValue}) => {
   return (
     <div className='methodOptions'>

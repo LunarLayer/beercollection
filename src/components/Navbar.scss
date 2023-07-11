@@ -1,42 +1,47 @@
 .navbar {
   z-index: 100;
   position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  height: var(--navbar-height);
-  padding-inline: 20px;
-
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+  top: 0; right: 0; left: 0;
   background-color: var(--navbar-color);
 
-  button {
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 700;
-    color: white;
-    background-color: var(--navbar-color);
-    border: 0;
-    padding-inline: 1rem;
-    // transition: 0;
+  .navLinks {
+    height: calc(var(--navbar-height) - 5px);
+    padding-inline: 20px;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    margin-inline: auto;
 
-    &.active {
-      color: black;
-      background-color: white;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      margin-block-start: 15px;
-      transition: all 0.2s ease;
+    button {
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      background-color: var(--navbar-color);
+      border: 0;
+      padding-inline: 1rem;
+
+      &.active {
+        color: black;
+        background-color: white;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        margin-block-start: 15px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
 
       &:hover {
-        text-decoration: none;
+        text-decoration: underline;
       }
     }
+  }
 
-    &:hover {
-      text-decoration: underline;
-    }
+  .bottom-border {
+    height: 5px;
+    background-color: white;
   }
 }

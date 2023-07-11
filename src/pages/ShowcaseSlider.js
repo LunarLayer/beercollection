@@ -58,5 +58,3 @@ const ShowcaseSlider = ({setSelectedView}) => {
 };
 
 export default ShowcaseSlider;
-
-// TODO: Look at boil volume for example. It should wrap the "25 litres" as a whole unit, not just wrap "litres" and then "25"

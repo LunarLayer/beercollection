@@ -17,33 +17,18 @@ const FilterModal = ({ setFilterModalOpen }) => {
 
   const [selectedValue, setSelectedValue] = useState(null);
   const [selectedTitle, setSelectedTitle] = useState(null);
-  const [matchesCount, setMatchesCount] = useState(0);
-  const [minValue, setMinValue] = useState("");
-  const [maxValue, setMaxValue] = useState("");
-  const inputMinRef = useRef(null);
-  const inputMaxRef = useRef(null);
-  const lastFocusedInputRef = useRef(null);
 
+  function ApplyFilter() {
+    let minValue = document.getElementById('minValueInput').value;
+    let maxValue = document.getElementById('maxValueInput').value;
 
-  // function matchesFilterRange(value) {
-  //   if (value >= minValue && value <= maxValue) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-
+    if (minValue && maxValue && selectedTitle) {
+      const newFilter = { filterTitle: selectedTitle, filterValue: selectedValue, minValue: minValue, maxValue: maxValue };
+      context.addFilter(newFilter);
+    }
+  }
 
   const HeaderSection = () => {
-    const CloseButton = () => {
-      return (
-        <div className="closeButton" onClick={() => setFilterModalOpen(false)}>
-          <CloseIcon />
-        </div>
-      );
-    };
-
     const BackButton = () => {
       return (
         <div className="backButton" onClick={() => {
@@ -55,6 +40,14 @@ const FilterModal = ({ setFilterModalOpen }) => {
       );
     };
 
+    const CloseButton = () => {
+      return (
+        <div className="closeButton" onClick={() => setFilterModalOpen(false)}>
+          <CloseIcon />
+        </div>
+      );
+    };
+
     return (
       <div className='headerSection'>
         {selectedValue && selectedTitle &&
@@ -62,7 +55,7 @@ const FilterModal = ({ setFilterModalOpen }) => {
         }
         <h2>Filter by</h2>
         {selectedValue && selectedTitle &&
-          <button onClick={() => {
+          <button className="selectedItemButton" onClick={() => {
             setSelectedValue(null)
             setSelectedTitle(null)
           }}>{selectedTitle}</button>
@@ -92,31 +85,23 @@ const FilterModal = ({ setFilterModalOpen }) => {
   const RangeSelector = () => {
     return (
       <div className={`rangeSelector ${selectedValue ? "open" : ""}`}>
-
-
-        <div className='header'>
-          <h2>Filter by</h2>
-          <button onClick={() => {
-            setSelectedValue(null)
-            setSelectedTitle(null)
-          }}>{selectedTitle}</button>
-        </div>
-
-        <div className="rangeFields">
+        <div className="flex-container">
           <input
+            id="minValueInput"
             type="text"
             placeholder="From"
-            value={minValue}
           />
           <span> - </span>
           <input
+            id="maxValueInput"
             type="text"
             placeholder="To"
-            value={maxValue}
           />
         </div>
-
-        <button className='resultsButton' onClick={() => { }}>Show results</button>
+        <button className='applyFilterButton' onClick={() => {
+          ApplyFilter();
+          setFilterModalOpen(false);
+        }}>Apply filter</button>
       </div>
     );
   }

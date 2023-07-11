@@ -71,22 +71,19 @@ const AddBeer = () => {
           <div className='beerImage'>
             {selectedImage ? (
               <>
-              <img src={URL.createObjectURL(selectedImage)} alt="a beer bottle or beer keg" />
-              <button type="button" className="upload-button" onClick={handleImageUpload}>
-                Change Image
-              </button>
+                <img src={URL.createObjectURL(selectedImage)} alt="a beer bottle or beer keg" />
+                <button type="button" className="upload-button" onClick={handleImageUpload}>
+                  Change Image
+                </button>
               </>
             ) : (
               <>
-              <img src={PlaceholderImage} alt="a beer with a question mark on the label, indicating the need to upload a beer image" />
-              <button type="button" className="upload-button" onClick={handleImageUpload}>
-                Upload Image
-              </button>
+                <img src={PlaceholderImage} alt="a beer with a question mark on the label, indicating the need to upload a beer image" />
+                <button type="button" className="upload-button" onClick={handleImageUpload}>
+                  Upload Image
+                </button>
               </>
             )}
-          </div>
-          <div className='star-rating'>
-            ✪✪✪✪✪
           </div>
         </div>
 
@@ -123,7 +120,7 @@ const AddBeer = () => {
                       <input {...register(`food_pairing.${index}.value`, { required: true })} />
                       <button className='removeButton' type="button" onClick={() => removeFoodPairing(index)}>-</button>
                     </div>
-                    {errors.food_pairing && errors.food_pairing[index] && ( // TODO: This is placed oddly
+                    {errors.food_pairing && errors.food_pairing[index] && (
                       <span>Can't add empty food pairing</span>
                     )}
                   </>
@@ -168,7 +165,7 @@ const AddBeer = () => {
                         -
                       </button>
                     </div>
-                    {errors.comment && errors.comment[index] && ( // TODO: This is placed oddly
+                    {errors.comment && errors.comment[index] && (
                       <span className='errorText'>Can't add empty comment</span>
                     )}
                   </>
@@ -427,7 +424,7 @@ const AddBeer = () => {
               </table>
             </div>
           </div>
-        <input className="submitButton" type="submit" placeholder='test' />
+          <input className="submitButton" type="submit" placeholder='test' />
         </div>
       </div>
     )
@@ -436,7 +433,6 @@ const AddBeer = () => {
   return (
     <form className="add-beer" onSubmit={handleSubmit(onSubmit)}>
       <ShowcaseFields />
-      
     </form>
   );
 };

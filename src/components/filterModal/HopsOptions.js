@@ -1,20 +1,27 @@
 import React from 'react';
 
-// import './HopsOptions.scss';
-
-const HopsOptions = ({setSelectedTitle, setSelectedValue}) => {
+const HopsOptions = ({ setSelectedTitle, setSelectedValue }) => {
   return (
     <div className='hopsOptions'>
       <h3>Hops</h3>
       <ul>
         <li>
-          <button onClick={() => setSelectedValue()}>Amount</button>
+          <button onClick={() => {
+            setSelectedValue("ingredients.hops.amount.value")
+            setSelectedTitle("Amount")
+          }}>Amount</button>
         </li>
         <li>
-          <button onClick={() => setSelectedValue()}>Add</button>
+          <button onClick={() => {
+            setSelectedValue("ingredients.hops.add")
+            setSelectedTitle("Add")
+          }}>Add</button>
         </li>
         <li>
-          <button onClick={() => setSelectedValue()}>Attribute</button>
+          <button onClick={() => {
+            setSelectedValue("ingredients.hops.attribute")
+            setSelectedTitle("Attribute")
+          }}>Attribute</button>
         </li>
       </ul>
     </div>

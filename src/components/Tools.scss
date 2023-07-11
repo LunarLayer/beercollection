@@ -1,6 +1,50 @@
 #tools {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: space-between;
   padding-inline: 10px;
+
+  .expandButton {
+    max-height: 30px;
+    white-space: nowrap;
+  }
+
+  .filtering {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    button {
+      max-height: 30px;
+    }
+
+    .removeFilterButton {
+      cursor: pointer;
+      display: flex;
+      gap: 0.25rem;
+
+      .closeIcon {
+        max-height: 100%;
+        max-width: 1.5rem;
+      }
+
+      &:hover {
+        .closeIcon {
+          path {
+            fill: red;
+          }
+        }
+      }
+    }
+    .filterButton {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      .filterIcon {
+        max-height: 100%;
+        max-width: 1rem;
+      }
+    }
+  }
 }
